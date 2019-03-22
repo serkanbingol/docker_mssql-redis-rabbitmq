@@ -1,0 +1,34 @@
+version: '3.7'
+
+services:
+  dev_rabbitmq:
+    image: rabbitmq:3-management
+    container_name: dev_mssql_rabbitmq
+    restart: on-failure
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    volumes:
+      - ./mssql_rabbitmq_volume:/var/lib/rabbitmq
+  dev_redis:
+    image: redis
+    container_name: dev_mssql_redis
+    restart: on-failure
+    command: redis-server --appendonly yes
+    ports:
+      - "6379:6379"  
+    volumes:
+      - ./mssql_redis_volume:/data
+  
+  dev_mssql:
+    image: microsoft/mssql-server-linux
+    container_name: dev_mssql_mssql
+    environment:
+            SA_PASSWORD: "MsSql!2019?"
+            ACCEPT_EULA: "Y"
+    restart: on-failure
+    ports:
+      - "1433:1433"
+    volumes:
+      - ./mssql_mssql_volume:/var/opt/mssql/
+      - /var/opt/mssql/data
