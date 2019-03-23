@@ -9,13 +9,27 @@
 
 
 
-**Notes**
-- Ports =>
-- Passwords =>
+**Table for credentials**
+
+|Container|         Port         |Username| Password  |
+|:-------:|:--------------------:|:------:|:---------:|
+|  Redis  |http://localhost:6379 | -----  |   -----   |
+|RabbitMQ |http://localhost:5672 | -----  |   -----   |
+|RabbitMQ |http://localhost:15672| guest  |   guest   |
+|  MsSql  |http://localhost:1433 |   sa   |MsSql!2019?|
 
 
-## Sample Screencast
+**Check containers status**
 
-![alt text](saved.gif)
+- After containers is up, run "**docker container ls**" to see their status
+- run "**telnet localhost 5672**" , "**telnet localhost 15672**"  , "**telnet localhost 6379**" ,"**telnet localhost 1433**"  to get response from containers
+
+## Compose Up Sample Screencast
+
+![compose-up.gif](https://github.com/bilgeadamdev/docker_mssql-redis-rabbitmq/blob/master/images/up_mssql-redis-rabbitmq.gif)
+
+## Compose Down Sample Screencast
+
+![compose-down.gif](https://github.com/bilgeadamdev/docker_mssql-redis-rabbitmq/blob/master/images/down_mssql-redis-rabbitmq.gif)
 
 
